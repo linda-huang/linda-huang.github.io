@@ -1,0 +1,58 @@
+#GameBoard {
+	position: relative;
+	margin: auto;
+	border-style: solid;
+  border-color: black;
+}
+
+#GameBoard .Block {
+	position: absolute;
+}
+
+#GameBoard #GameOver {
+	text-align: center;
+	height: 100%;
+	flex-direction: column;
+	display: flex;
+	justify-content: space-around;
+}
+
+#GameBoard #Score {
+	position: relative;
+	top: 105%;
+	text-align: center;
+	font-weight: bold;
+  color: black;
+	margin-bottom: 10vh;
+}
+
+#GameBoard #GameOverText {
+	color: #ca0000;
+	font-weight: bold;
+	text-decoration-line: underline;
+}
+
+#GameBoard #PressSpaceText {
+	color: #2e7ecb;
+	font-weight: bold;
+}
+
+@keyframes mooncake-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mooncake {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mooncake {
+    animation: mooncake-spin infinite 20s linear;
+  }
+}
