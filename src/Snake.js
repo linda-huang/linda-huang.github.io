@@ -50,7 +50,7 @@ class Snake extends React.Component {
 
   initGame() {
     // Game size initialization
-    let percentageWidth = 60
+    let percentageWidth = 55
     let width =
       document.getElementById('GameBoard').parentElement.offsetWidth *
       (percentageWidth / 100)
@@ -208,7 +208,6 @@ class Snake extends React.Component {
     let snake = this.state.snake
     let fish = this.state.fish
 
-    // if the snake's head is on an apple
     if ((snake[0].Xpos >= fish.Xpos && snake[0].Xpos <= fish.Xpos + 3*this.state.blockWidth) 
       && (snake[0].Ypos >= fish.Ypos && snake[0].Ypos <= fish.Ypos + 3*this.state.blockHeight)) {
         window.location.href = "https://linda-huang.github.io/resume.pdf";
@@ -434,7 +433,7 @@ class Snake extends React.Component {
             background: this.state.appleColor,
           }}
         />
-          <a href="https://github.com/linda-huang"
+          <a href="https://linda-huang.github.io/resume.pdf"
               target="_blank"
               rel="noopener noreferrer">
             <img src={fish} alt="fish" height={3*this.state.blockHeight} width={3*this.state.blockWidth}  style={{

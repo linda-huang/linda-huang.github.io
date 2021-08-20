@@ -6,6 +6,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* <img src={mooncake} className="mooncake" alt="mooncake" height="100" width="100" /> */}
+        <div className="instructions">
+          eat (or click on) the fish for a one-page resume
+        </div>
         <div className="link-container">
           <a
             className="link"
