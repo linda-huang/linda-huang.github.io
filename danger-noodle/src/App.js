@@ -1,6 +1,5 @@
 import './App.css';
 import Snake from './Snake';
-import mooncake from './mooncake.svg';
 
 function App() {
   return (

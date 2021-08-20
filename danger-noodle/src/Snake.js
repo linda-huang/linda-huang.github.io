@@ -138,7 +138,6 @@ class Snake extends React.Component {
     let blockHeight = this.state.blockHeight
     let apple = this.state.apple
 
-    // snake reset
     let snake = []
     let Xpos = width / 2
     let Ypos = height / 2
@@ -212,7 +211,7 @@ class Snake extends React.Component {
     // if the snake's head is on an apple
     if ((snake[0].Xpos >= fish.Xpos && snake[0].Xpos <= fish.Xpos + 3*this.state.blockWidth) 
       && (snake[0].Ypos >= fish.Ypos && snake[0].Ypos <= fish.Ypos + 3*this.state.blockHeight)) {
-        console.log('eating fish')
+        window.location.href = "https://linda-huang.github.io/resume.pdf";
     }
   }
 
