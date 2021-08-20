@@ -18,6 +18,12 @@
   color: #0d2b33;
 }
 
+.game-instructions {
+  margin-top: 1vh;
+  font-size: calc(1px + 2vmin);
+  color: #5F6368;
+}
+
 .link-container {
   display: flex;
   flex-direction: row;

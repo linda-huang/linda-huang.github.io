@@ -1,6 +1,6 @@
 import React from 'react'
 import './Game.css'
-// import GameOver from './GameOver.jsx'
+import mooncake from './mooncake.svg'
 import fish from './fish.png';
 
 const Direction = Object.freeze({
@@ -177,6 +177,7 @@ class Snake extends React.Component {
       score: 0,
       newHighScore: false,
     })
+    // this.props.setIsGameOver(false)
   }
 
   getRandomColor() {
@@ -274,8 +275,10 @@ class Snake extends React.Component {
     let snake = this.state.snake
 
     for (let i = 1; i < snake.length; i++) {
-      if (snake[0].Xpos === snake[i].Xpos && snake[0].Ypos === snake[i].Ypos)
+      if (snake[0].Xpos === snake[i].Xpos && snake[0].Ypos === snake[i].Ypos) {
         this.setState({ isGameOver: true })
+        this.props.setIsGameOver(true)
+      }
     }
   }
 
@@ -391,11 +394,22 @@ class Snake extends React.Component {
     this.setState({ direction: newDirection })
   }
 
+  openResume() {
+    window.location.href = "https://linda-huang.github.io/resume.pdf"
+  }
+
   render() {
     if (this.state.isGameOver) {
       return (
         <div>
-          game over!
+          <a href="https://linda-huang.github.io/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+            <div>
+              <img src={mooncake} className="mooncake" alt="mooncake" height="200" width="200"/>
+            </div>
+          </a>
+          <div className="game-over">game over!</div>
         </div>
       )
     }

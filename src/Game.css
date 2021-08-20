@@ -9,14 +9,6 @@
 	position: absolute;
 }
 
-#GameBoard #GameOver {
-	text-align: center;
-	height: 100%;
-	flex-direction: column;
-	display: flex;
-	justify-content: space-around;
-}
-
 #GameBoard #Score {
 	position: relative;
 	top: 105%;
@@ -26,15 +18,9 @@
 	margin-bottom: 10vh;
 }
 
-#GameBoard #GameOverText {
-	color: #ca0000;
-	font-weight: bold;
-	text-decoration-line: underline;
-}
-
-#GameBoard #PressSpaceText {
-	color: #2e7ecb;
-	font-weight: bold;
+.game-over {
+  margin-top: 5vh;
+  color: #0d2b33;
 }
 
 @keyframes mooncake-spin {

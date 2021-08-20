@@ -1,14 +1,36 @@
 import './App.css';
 import Snake from './Snake';
+import {useState} from 'react';
+
+function UserText(props) {
+  console.log(props.isGameOver)
+  if (props.isGameOver) {
+    return (
+      <div className="instructions">
+        that's okay. click on giant spinning mooncake for a one-page resume
+      </div>
+    )
+  }
+  return (
+    <div>
+      <div className="instructions">
+        eat (or just click on) the fish for a one-page resume
+      </div>
+      <div className="game-instructions">
+        use arrow keys to navigate your Snake
+        <br/>
+        snack on the red apple to grow (the game ends when you munch on yourself!)
+      </div>
+    </div>
+  )
+}
 
 function App() {
+  const [isGameOver, setIsGameOver] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={mooncake} className="mooncake" alt="mooncake" height="100" width="100" /> */}
-        <div className="instructions">
-          eat (or click on) the fish for a one-page resume
-        </div>
+        <UserText isGameOver={isGameOver}/>
         <div className="link-container">
           <a
             className="link"
@@ -35,7 +57,7 @@ function App() {
             linkedin
           </a>
         </div>
-        <Snake/>
+        <Snake setIsGameOver={(input) => setIsGameOver(input)}/>
       </header>
     </div>
   );
