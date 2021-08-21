@@ -15,7 +15,7 @@ const appleHue = '#ED2939'
 
 const snakeHue = '#13364b'
 
-const initialGameLoopTimeout = 75;
+const initialGameLoopTimeout = 60;
 
 class Snake extends React.Component {
   constructor(props) {
@@ -92,7 +92,7 @@ class Snake extends React.Component {
     let fishYpos =
       Math.floor(Math.random() * ((height - 3*blockHeight) / blockHeight + 1)) *
       blockHeight
-    while (!(snake[0].Ypos > fishYpos + 3*this.state.blockHeight || snake[0].Ypos < fishYpos - 3*this.state.blockHeight)) {
+    while (!(Math.abs(snake[0].Ypos - fishYpos) > 5*blockHeight) || this.isAppleOnFish(appleXpos, appleYpos)) {
       fishYpos =
         Math.floor(Math.random() * ((height - 3*blockHeight) / blockHeight + 1)) *
         blockHeight
@@ -209,8 +209,8 @@ class Snake extends React.Component {
     let snake = this.state.snake
     let fish = this.state.fish
 
-    if ((snake[0].Xpos >= fish.Xpos && snake[0].Xpos <= fish.Xpos + 3*this.state.blockWidth) 
-      && (snake[0].Ypos >= fish.Ypos && snake[0].Ypos <= fish.Ypos + 3*this.state.blockHeight)) {
+    if ((snake[0].Xpos >= fish.Xpos && snake[0].Xpos <= fish.Xpos + 2*this.state.blockWidth) 
+      && (snake[0].Ypos >= fish.Ypos && snake[0].Ypos <= fish.Ypos + 2*this.state.blockHeight)) {
         window.location.href = "https://linda-huang.github.io/resume.pdf";
     }
   }
@@ -240,7 +240,7 @@ class Snake extends React.Component {
       apple.Ypos =
         Math.floor(Math.random() * ((height - blockHeight) / blockHeight + 1)) *
         blockHeight
-      while (this.isAppleOnSnake(apple.Xpos, apple.Ypos)) {
+      while (this.isAppleOnSnake(apple.Xpos, apple.Ypos) || this.isAppleOnFish(apple.Xpos, apple.Ypos)) {
         apple.Xpos =
           Math.floor(Math.random() * ((width - blockWidth) / blockWidth + 1)) *
           blockWidth
@@ -280,6 +280,12 @@ class Snake extends React.Component {
         this.props.setIsGameOver(true)
       }
     }
+  }
+
+  isAppleOnFish(appleXpos, appleYpos) {
+    let fish = this.state.fish
+    return ((appleXpos >= fish.Xpos && appleXpos <= fish.Xpos + 2*this.state.blockWidth) 
+    && (appleYpos >= fish.Ypos && appleYpos <= fish.Ypos + 2*this.state.blockHeight))
   }
 
   isAppleOnSnake(appleXpos, appleYpos) {

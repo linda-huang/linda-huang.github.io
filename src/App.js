@@ -22,10 +22,13 @@ function UserText(props) {
   }
   if (props.isGameOver) {
     return (
-      <div className="instructions">
-        that's okay. click on giant spinning mooncake for a one-page resume
-        <br/>
-        (or hit the spacebar to restart)
+      <div>
+        <div className="instructions">
+          that's okay. click on giant spinning mooncake for a one-page resume
+        </div>
+        <div className="game-instructions">
+          (or hit the spacebar to restart)
+        </div>
       </div>
     )
   }
