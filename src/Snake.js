@@ -1,4 +1,5 @@
 import React from 'react'
+import {isMobile} from 'react-device-detect';
 import './Game.css'
 import mooncake from './mooncake.svg'
 import fish from './fish.png';
@@ -391,8 +392,19 @@ class Snake extends React.Component {
     let newDirection = this.state.direction === Direction.Up ? Direction.Up : Direction.Down
     this.setState({ direction: newDirection })
   }
-  
+
   render() {
+    if (isMobile) {
+      return (
+          <a href="https://linda-huang.github.io/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+              <div>
+                <img src={mooncake} className="mooncake" alt="mooncake" height="200" width="200"/>
+              </div>
+          </a>
+        )
+    }
     if (this.state.isGameOver) {
       return (
         <div>
