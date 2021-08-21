@@ -3,6 +3,7 @@
 	margin: auto;
 	border-style: solid;
   border-color: black;
+  margin-top: 3.5vh;
 }
 
 #GameBoard .Block {
@@ -11,11 +12,10 @@
 
 #GameBoard #Score {
 	position: relative;
-	top: 105%;
+	top: 106%;
 	text-align: center;
 	font-weight: bold;
   color: black;
-	margin-bottom: 10vh;
 }
 
 .game-over {

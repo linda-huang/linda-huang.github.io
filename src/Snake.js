@@ -14,6 +14,8 @@ const appleHue = '#ED2939'
 
 const snakeHue = '#13364b'
 
+const initialGameLoopTimeout = 75;
+
 class Snake extends React.Component {
   constructor(props) {
     super(props)
@@ -25,7 +27,7 @@ class Snake extends React.Component {
       height: 0,
       blockWidth: 0,
       blockHeight: 0,
-      gameLoopTimeout: 50,
+      gameLoopTimeout: initialGameLoopTimeout,
       timeoutId: 0,
       startSnakeSize: 0,
       snake: [],
@@ -49,8 +51,7 @@ class Snake extends React.Component {
   }
 
   initGame() {
-    // Game size initialization
-    let percentageWidth = 55
+    let percentageWidth = 50
     let width =
       document.getElementById('GameBoard').parentElement.offsetWidth *
       (percentageWidth / 100)
@@ -60,7 +61,6 @@ class Snake extends React.Component {
     let blockWidth = width / 60
     let blockHeight = height / 40
 
-    // snake initialization
     let startSnakeSize = 10
     let snake = []
     let Xpos = width / 2
@@ -73,7 +73,6 @@ class Snake extends React.Component {
       snake.push(snakePart)
     }
 
-    // apple position initialization
     let appleXpos =
       Math.floor(Math.random() * ((width - blockWidth) / blockWidth + 1)) *
       blockWidth
@@ -92,7 +91,7 @@ class Snake extends React.Component {
     let fishYpos =
       Math.floor(Math.random() * ((height - 3*blockHeight) / blockHeight + 1)) *
       blockHeight
-    while (fishYpos === snake[0].Ypos) {
+    while (!(snake[0].Ypos > fishYpos + 3*this.state.blockHeight || snake[0].Ypos < fishYpos - 3*this.state.blockHeight)) {
       fishYpos =
         Math.floor(Math.random() * ((height - 3*blockHeight) / blockHeight + 1)) *
         blockHeight
@@ -171,13 +170,13 @@ class Snake extends React.Component {
       direction: Direction.Right,
       directionChanged: false,
       isGameOver: false,
-      gameLoopTimeout: 50,
+      gameLoopTimeout: initialGameLoopTimeout,
       snakeColor: snakeHue,
       appleColor: appleHue,
       score: 0,
       newHighScore: false,
     })
-    // this.props.setIsGameOver(false)
+    this.props.setIsGameOver(false)
   }
 
   getRandomColor() {
@@ -344,7 +343,6 @@ class Snake extends React.Component {
   }
 
   handleKeyDown(event) {
-    // if spacebar is pressed to run a new game
     if (this.state.isGameOver && event.keyCode === 32) {
       this.resetGame()
       return
@@ -393,11 +391,7 @@ class Snake extends React.Component {
     let newDirection = this.state.direction === Direction.Up ? Direction.Up : Direction.Down
     this.setState({ direction: newDirection })
   }
-
-  openResume() {
-    window.location.href = "https://linda-huang.github.io/resume.pdf"
-  }
-
+  
   render() {
     if (this.state.isGameOver) {
       return (

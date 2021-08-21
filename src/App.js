@@ -8,6 +8,8 @@ function UserText(props) {
     return (
       <div className="instructions">
         that's okay. click on giant spinning mooncake for a one-page resume
+        <br/>
+        (or hit the spacebar to restart)
       </div>
     )
   }
