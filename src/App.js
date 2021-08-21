@@ -4,7 +4,22 @@ import {useState} from 'react';
 import {isMobile} from 'react-device-detect';
 
 function UserText(props) {
-  console.log(props.isGameOver)
+  if (isMobile) {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <div className="instructions">
+            if you were on your desktop browser, you'd see a snake game
+            <br/>
+            here's a giant spinning mooncake instead
+          </div>
+          <div className="game-instructions">
+          (click for one-page resume)
+        </div>
+        </header>
+      </div>
+    )
+  }
   if (props.isGameOver) {
     return (
       <div className="instructions">
@@ -30,23 +45,6 @@ function UserText(props) {
 
 function App() {
   const [isGameOver, setIsGameOver] = useState(false);
-
-  if (isMobile) {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <div className="instructions">
-            if you were on your desktop browser, you'd see a snake game
-            <br/>
-            here's a giant spinning mooncake instead
-          </div>
-          <div className="game-instructions">
-          (click for one-page resume)
-        </div>
-        </header>
-      </div>
-    )
-  }
   return (
     <div className="App">
       <header className="App-header">

@@ -400,7 +400,7 @@ class Snake extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer">
               <div>
-                <img src={mooncake} className="mooncake" alt="mooncake" height="200" width="200"/>
+                <img src={mooncake} className="mooncake" alt="mooncake" height="50" width="50"/>
               </div>
           </a>
         )
