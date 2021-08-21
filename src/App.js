@@ -6,17 +6,15 @@ import {isMobile} from 'react-device-detect';
 function UserText(props) {
   if (isMobile) {
     return (
-      <div className="App">
-        <header className="App-header">
-          <div className="instructions">
-            if you were on your desktop browser, you'd see a snake game
-            <br/>
-            here's a giant spinning mooncake instead
-          </div>
-          <div className="game-instructions">
+      <div>
+        <div className="instructions">
+          if you were on your desktop browser, you'd see a snake game
+          <br/>
+          here's a giant spinning mooncake instead
+        </div>
+        <div className="game-instructions">
           (click for one-page resume)
         </div>
-        </header>
       </div>
     )
   }

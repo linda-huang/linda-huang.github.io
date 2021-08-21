@@ -46,9 +46,11 @@ class Snake extends React.Component {
   }
 
   componentDidMount() {
-    this.initGame()
-    window.addEventListener('keydown', this.handleKeyDown)
-    this.gameLoop()
+    if (!isMobile) {
+      this.initGame()
+      window.addEventListener('keydown', this.handleKeyDown)
+      this.gameLoop()
+    }
   }
 
   initGame() {
@@ -127,8 +129,10 @@ class Snake extends React.Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.state.timeoutId)
-    window.removeEventListener('keydown', this.handleKeyDown)
+    if (!isMobile) {
+      clearTimeout(this.state.timeoutId)
+      window.removeEventListener('keydown', this.handleKeyDown)
+    }
   }
 
   resetGame() {
@@ -406,7 +410,7 @@ class Snake extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer">
               <div>
-                <img src={mooncake} className="mooncake" alt="mooncake" height="50" width="50"/>
+                <img src={mooncake} className="mooncake" alt="mooncake" height="250" width="250"/>
               </div>
           </a>
         )
@@ -418,7 +422,7 @@ class Snake extends React.Component {
               target="_blank"
               rel="noopener noreferrer">
             <div>
-              <img src={mooncake} className="mooncake" alt="mooncake" height="200" width="200"/>
+              <img src={mooncake} className="mooncake" alt="mooncake" height="300" width="300"/>
             </div>
           </a>
           <div className="game-over">game over!</div>
